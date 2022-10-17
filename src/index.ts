@@ -12,6 +12,7 @@ export interface AppleStrategyOptions {
   clientID: string;
   clientSecret: string;
   callbackURL: string;
+  scope: string;
 }
 
 // These interface declare what extra params we will get from Apple on the
@@ -56,6 +57,7 @@ export class AppleStrategy<User> extends OAuth2Strategy<
         clientID: options.clientID,
         clientSecret: options.clientSecret,
         callbackURL: options.callbackURL,
+        scope: options.scope,
       },
       verify
     );
