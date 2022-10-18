@@ -5,7 +5,7 @@ import {
   OAuth2Profile,
   OAuth2Strategy,
   OAuth2StrategyVerifyParams,
-} from "remix-auth-oauth2";
+} from "remix-auth-oauth2-andgo";
 
 // These are the custom options we need from the developer to use the strategy
 export interface AppleStrategyOptions {

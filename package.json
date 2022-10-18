@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "remix-auth": "^3.0.0",
-    "remix-auth-oauth2": "github:m-tomoya/remix-auth-oauth2"
+    "remix-auth-oauth2-andgo": "^1.0.1"
   },
   "description": "Strategy that uses Apples Sign In with Apple.",
   "directories": {

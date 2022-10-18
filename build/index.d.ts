@@ -1,5 +1,5 @@
 import type { StrategyVerifyCallback } from "remix-auth";
-import { OAuth2Profile, OAuth2Strategy, OAuth2StrategyVerifyParams } from "remix-auth-oauth2";
+import { OAuth2Profile, OAuth2Strategy, OAuth2StrategyVerifyParams } from "remix-auth-oauth2-andgo";
 export interface AppleStrategyOptions {
     clientID: string;
     clientSecret: string;

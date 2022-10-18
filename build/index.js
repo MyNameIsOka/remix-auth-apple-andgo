@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppleStrategy = void 0;
 // We need to import the OAuth2Strategy, the verify callback and the profile interfaces
-const remix_auth_oauth2_1 = require("remix-auth-oauth2");
+const remix_auth_oauth2_andgo_1 = require("remix-auth-oauth2-andgo");
 // And we create our strategy extending the OAuth2Strategy, we also need to
 // pass the User as we did on the FormStrategy, we pass the Auth0Profile and the
 // extra params
-class AppleStrategy extends remix_auth_oauth2_1.OAuth2Strategy {
+class AppleStrategy extends remix_auth_oauth2_andgo_1.OAuth2Strategy {
     // We receive our custom options and our verify callback
     constructor(options, verify) {
         // And we pass the options to the super constructor using our own options
