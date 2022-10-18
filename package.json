@@ -1,5 +1,5 @@
 {
-  "name": "remix-auth-apple",
+  "name": "remix-auth-apple-andgo",
   "version": "1.0.0",
   "author": "m-tomoya <hi@m-tomoya.de>",
   "main": "./build/index.js",
@@ -62,10 +62,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/m-tomoya/remix-auth-apple.git"
+    "url": "git+https://github.com/m-tomoya/remix-auth-apple-andgo.git"
   },
   "bugs": {
-    "url": "https://github.com/m-tomoya/remix-auth-apple/issues"
+    "url": "https://github.com/m-tomoya/remix-auth-apple-andgo/issues"
   },
-  "homepage": "https://github.com/m-tomoya/remix-auth-apple#readme"
+  "homepage": "https://github.com/m-tomoya/remix-auth-apple-andgo#readme"
 }
