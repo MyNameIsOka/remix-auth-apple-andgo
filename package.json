@@ -1,6 +1,6 @@
 {
   "name": "remix-auth-apple-andgo",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "m-tomoya <hi@m-tomoya.de>",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "remix-auth": "^3.0.0",
-    "remix-auth-oauth2-andgo": "^1.0.1"
+    "remix-auth-oauth2-andgo": "^1.0.3"
   },
   "description": "Strategy that uses Apples Sign In with Apple.",
   "directories": {
