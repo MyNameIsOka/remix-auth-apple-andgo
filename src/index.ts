@@ -21,11 +21,18 @@ export interface AppleExtraParams extends Record<string, string | number> {
   id_token: string;
   expires_in: 3600;
   token_type: "Bearer";
+  scope: string
 }
 
 // The AppleProfile extends the OAuth2Profile with the extra params and mark
 // some of them as required
-export type AppleProfile = OAuth2Profile;
+export type AppleProfile = {  
+  _json: {
+    sub: string
+    locale: string
+    email: string
+  } 
+} & OAuth2Profile;
 
 // And we create our strategy extending the OAuth2Strategy, we also need to
 // pass the User as we did on the FormStrategy, we pass the Auth0Profile and the
@@ -38,9 +45,15 @@ export class AppleStrategy<User> extends OAuth2Strategy<
   // The OAuth2Strategy already has a name but we can override it
   name = "apple";
 
+  private readonly scope: string
   // We receive our custom options and our verify callback
   constructor(
-    options: AppleStrategyOptions,
+    {
+       clientID,
+       clientSecret,
+       callbackURL,
+       scope,
+    }: AppleStrategyOptions,
     verify: StrategyVerifyCallback<
       User,
       OAuth2StrategyVerifyParams<AppleProfile, AppleExtraParams>
@@ -54,13 +67,13 @@ export class AppleStrategy<User> extends OAuth2Strategy<
       {
         authorizationURL: `https://appleid.apple.com/auth/authorize`,
         tokenURL: `https://appleid.apple.com/auth/token`,
-        clientID: options.clientID,
-        clientSecret: options.clientSecret,
-        callbackURL: options.callbackURL,
-        scope: options.scope,
+        clientID,
+        clientSecret,
+        callbackURL,      
       },
       verify
     );
+    this.scope = scope ?? 'email'
   }
 
   protected async userProfile(): Promise<AppleProfile> {
@@ -72,8 +85,10 @@ export class AppleStrategy<User> extends OAuth2Strategy<
   // Here we add the scope so Auth0 can use it, you can pass any extra param
   // you need to send to the authorizationURL here base on your provider.
   protected authorizationParams() {
-    return new URLSearchParams({
-      response_mode: "query",
-    });
+    const params = new URLSearchParams({
+      scope: this.scope,
+      include_granted_scopes: 'true',
+    })
+    return params
   }
 }
