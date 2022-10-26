@@ -9,7 +9,7 @@ const remix_auth_oauth2_andgo_1 = require("remix-auth-oauth2-andgo");
 class AppleStrategy extends remix_auth_oauth2_andgo_1.OAuth2Strategy {
     // private readonly scope: string
     // We receive our custom options and our verify callback
-    constructor({ clientID, clientSecret, callbackURL, scope, }, verify) {
+    constructor({ clientID, clientSecret, callbackURL, scope }, verify) {
         // And we pass the options to the super constructor using our own options
         // to generate them, this was we can ask less configuration to the developer
         // using our strategy
@@ -19,11 +19,11 @@ class AppleStrategy extends remix_auth_oauth2_andgo_1.OAuth2Strategy {
             clientID,
             clientSecret,
             callbackURL,
-            scope
+            scope,
         }, verify);
         // The OAuth2Strategy already has a name but we can override it
         this.name = "apple";
-        this.scope = scope !== null && scope !== void 0 ? scope : 'email';
+        this.scope = scope !== null && scope !== void 0 ? scope : "email";
     }
     async userProfile() {
         return { provider: "apple" };
@@ -35,7 +35,8 @@ class AppleStrategy extends remix_auth_oauth2_andgo_1.OAuth2Strategy {
     authorizationParams() {
         const params = new URLSearchParams({
             scope: this.scope,
-            include_granted_scopes: 'true',
+            include_granted_scopes: "true",
+            response_mode: "form_post",
         });
         return params;
     }

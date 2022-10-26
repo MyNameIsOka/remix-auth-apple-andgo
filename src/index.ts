@@ -21,7 +21,7 @@ export interface AppleExtraParams extends Record<string, string | number> {
   id_token: string;
   expires_in: 3600;
   token_type: "Bearer";
-  scope: string
+  scope: string;
 }
 
 // The AppleProfile extends the OAuth2Profile with the extra params and mark
@@ -42,12 +42,7 @@ export class AppleStrategy<User> extends OAuth2Strategy<
   // private readonly scope: string
   // We receive our custom options and our verify callback
   constructor(
-    {
-       clientID,
-       clientSecret,
-       callbackURL,
-       scope,
-    }: AppleStrategyOptions,
+    { clientID, clientSecret, callbackURL, scope }: AppleStrategyOptions,
     verify: StrategyVerifyCallback<
       User,
       OAuth2StrategyVerifyParams<AppleProfile, AppleExtraParams>
@@ -63,12 +58,12 @@ export class AppleStrategy<User> extends OAuth2Strategy<
         tokenURL: `https://appleid.apple.com/auth/token`,
         clientID,
         clientSecret,
-        callbackURL,      
-        scope
+        callbackURL,
+        scope,
       },
       verify
     );
-    this.scope = scope ?? 'email'
+    this.scope = scope ?? "email";
   }
 
   protected async userProfile(): Promise<AppleProfile> {
@@ -82,8 +77,10 @@ export class AppleStrategy<User> extends OAuth2Strategy<
   protected authorizationParams() {
     const params = new URLSearchParams({
       scope: this.scope,
-      include_granted_scopes: 'true',
-    })
-    return params
+      include_granted_scopes: "true",
+      response_mode: "form_post",
+    });
+
+    return params;
   }
 }

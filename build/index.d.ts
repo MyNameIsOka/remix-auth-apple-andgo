@@ -15,7 +15,7 @@ export interface AppleExtraParams extends Record<string, string | number> {
 export declare type AppleProfile = OAuth2Profile;
 export declare class AppleStrategy<User> extends OAuth2Strategy<User, AppleProfile, AppleExtraParams> {
     name: string;
-    constructor({ clientID, clientSecret, callbackURL, scope, }: AppleStrategyOptions, verify: StrategyVerifyCallback<User, OAuth2StrategyVerifyParams<AppleProfile, AppleExtraParams>>);
+    constructor({ clientID, clientSecret, callbackURL, scope }: AppleStrategyOptions, verify: StrategyVerifyCallback<User, OAuth2StrategyVerifyParams<AppleProfile, AppleExtraParams>>);
     protected userProfile(): Promise<AppleProfile>;
     protected authorizationParams(): URLSearchParams;
 }
