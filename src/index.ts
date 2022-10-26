@@ -26,13 +26,7 @@ export interface AppleExtraParams extends Record<string, string | number> {
 
 // The AppleProfile extends the OAuth2Profile with the extra params and mark
 // some of them as required
-export type AppleProfile = {  
-  _json: {
-    sub: string
-    locale: string
-    email: string
-  } 
-} & OAuth2Profile;
+export type AppleProfile = OAuth2Profile;
 
 // And we create our strategy extending the OAuth2Strategy, we also need to
 // pass the User as we did on the FormStrategy, we pass the Auth0Profile and the
@@ -45,7 +39,7 @@ export class AppleStrategy<User> extends OAuth2Strategy<
   // The OAuth2Strategy already has a name but we can override it
   name = "apple";
 
-  private readonly scope: string
+  // private readonly scope: string
   // We receive our custom options and our verify callback
   constructor(
     {
@@ -70,6 +64,7 @@ export class AppleStrategy<User> extends OAuth2Strategy<
         clientID,
         clientSecret,
         callbackURL,      
+        scope
       },
       verify
     );

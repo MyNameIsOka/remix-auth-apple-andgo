@@ -10,11 +10,12 @@ export interface AppleExtraParams extends Record<string, string | number> {
     id_token: string;
     expires_in: 3600;
     token_type: "Bearer";
+    scope: string;
 }
 export declare type AppleProfile = OAuth2Profile;
 export declare class AppleStrategy<User> extends OAuth2Strategy<User, AppleProfile, AppleExtraParams> {
     name: string;
-    constructor(options: AppleStrategyOptions, verify: StrategyVerifyCallback<User, OAuth2StrategyVerifyParams<AppleProfile, AppleExtraParams>>);
+    constructor({ clientID, clientSecret, callbackURL, scope, }: AppleStrategyOptions, verify: StrategyVerifyCallback<User, OAuth2StrategyVerifyParams<AppleProfile, AppleExtraParams>>);
     protected userProfile(): Promise<AppleProfile>;
     protected authorizationParams(): URLSearchParams;
 }
